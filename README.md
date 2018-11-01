@@ -41,6 +41,18 @@ The is a very simple Helm chart to deploy the service to a Kubernetes cluster
 helm upgrade --install --namespace fastify fastify-bootstrap helm/fastify-bootstrap --debug
 ```
 
+We can set the certificate once we have the `certmanager` configured using the following. This will automatically
+create the specified certificates for the domain names in the certificate. It will create the TLS certs and store
+them in a kuberenetes secrets, which can be references by the ingress component.
+
+```bash
+kubectl apply -f helm/fastify-bootstrap/certificate.yaml
+```
+
+Here is another document on using the cert managet
+
+* https://blog.n1analytics.com/free-automated-tls-certificates-on-k8s/
+
 
 
 

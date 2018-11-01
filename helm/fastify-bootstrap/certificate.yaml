@@ -1,0 +1,21 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: shelterme-com-au
+  namespace: fastify
+spec:
+  secretName: shelterme-com-au-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  commonName: shelterme.com.au
+  dnsNames:
+  - shelterme.com.au
+  - api.shelterme.com.au
+  acme:
+    config:
+    - http01:
+        ingress: nginx
+      domains:
+      - shelterme.com.au
+      - api.shelterme.com.au
