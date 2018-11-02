@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  description: Get version information
+  version: 1.0.0
+  title: Get version information
+  contact:
+    name: Jim Alateras
+    email: jima@comware.com.au
+servers:
+  - url: http://localhost:4444
+    description: localhost
+paths:
+  /v1/version:
+    get:
+      summary: Return the version info
+      description: Return the version information
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionInfo'
+
+  /v1/relay:
+    post:
+      summary: Relay this request to another service
+      description: This simply forwards the request to the specified URL
+      parameters:
+        - name: relayTo
+          in: query
+          required: true
+          description: The URL that the request will be forwarded too
+          schema:
+            type: string
+      responses:
+        '201':
+          description: The request was successfully relayed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnyJSON'
+
+components:
+  schemas:
+    VersionInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        startTime:
+          type: string
+        upTime:
+          type: string
+      required:
+        - name
+        - version
+        - startTime
+        - upTime
+      additionalProperties: false
+
+    AnyJSON:
+      type: object
+      additionalProperties: true
