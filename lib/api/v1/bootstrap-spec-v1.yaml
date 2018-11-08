@@ -9,6 +9,8 @@ info:
 servers:
   - url: http://localhost:4444
     description: localhost
+  - url: https://api.shelterme.com.au
+    description: staging gke
 paths:
   /v1/version:
     get:
