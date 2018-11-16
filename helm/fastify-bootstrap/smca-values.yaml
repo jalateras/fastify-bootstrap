@@ -4,11 +4,14 @@
 
 replicaCount: 3
 
+version: v1
+
 image:
   repository: jalateras/fastify-bootstrap
   tag: latest
   pullPolicy: Always
-
+  annotations:
+    prometheus.io/scrape: 'true'
 container:
   host: 0.0.0.0
   
@@ -35,7 +38,7 @@ resources:
     cpu: 500m
     memory: 250Mi
   requests:
-    cpu: 100m
+    cpu: 200m
     memory: 128Mi
 
 nodeSelector: {}

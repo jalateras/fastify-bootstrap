@@ -38,7 +38,7 @@ $npm start
 The is a very simple Helm chart to deploy the service to a Kubernetes cluster
 
 ```bash
-helm upgrade --install --namespace fastify fastify-bootstrap helm/fastify-bootstrap --debug
+helm upgrade --install --namespace demo fastify-bootstrap helm/fastify-bootstrap --debug
 ```
 
 We can set the certificate once we have the `certmanager` configured using the following. This will automatically

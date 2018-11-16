@@ -18,6 +18,11 @@ spec:
       labels:
         app: {{ template "fastify-bootstrap.name" . }}
         release: {{ .Release.Name }}
+        version: {{ .Values.version }}
+{{- with .Values.image.annotations }}
+      annotations:
+{{ toYaml . | indent 8 }}
+{{- end }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
